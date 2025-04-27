@@ -1,72 +1,49 @@
-package co;
+package Sample;
 
-	// Parent class
-	class Person {
-	    public String name = "Alice"; 
-	    private int age = 25;          
-	    protected String address = "123 Main Street";  
-	    String phone = "9120695304";  
+// User-defined class
+class Modi {
 
-	    // Public method
-	    public void displayPublic() {
-	        System.out.println("Public Method: Name is " + name);
-	    }
+    public int a = 100;        // Public - accessible anywhere
+    protected int b = 200;     // Protected - accessible within package and subclasses
+    int c = 300;               // Default (no modifier) - accessible within package
+    private String d;          // Private - accessible only within this class
 
-	    // Private method 
-	    private void displayPrivate() {
-	        System.out.println("Private Method: Age is " + age);
-	    }
+    // Getter method for 'd'
+    public String getName() {
+        return d;
+    }
 
-	    // Protected method
-	    protected void displayProtected() {
-	        System.out.println("Protected Method: Address is " + address);
-	    }
+    // Setter method for 'd'
+    public void setName(String d) {
+        this.d = d;
+    }
+}
 
-	    // Default method (package-private)
-	    void displayDefault() {
-	        System.out.println("Default Method: Phone is " + phone);
-	    }
+// Main class
+public class Modifiers {
 
-	    public void accessPrivateMethod() {
-	        displayPrivate();  
-	    }
-	}
+    public int a = 100;         // Public variable
+    protected int b = 200;      // Protected variable
+    int c = 300;                // Default variable
+    private String d = "Sudhakar"; // Private variable
 
-	// Child class 
-	class Student extends Person {
-	    void displayStudentDetails() {
-	        System.out.println("\n--- Accessing Parent Class Members in Subclass ---");
-	        System.out.println("Public Variable: " + name);  
-	        // System.out.println("Private Variable: " + age);  
-	        System.out.println("Protected Variable: " + address);  
-	        System.out.println("Default Variable: " + phone);  
+    public static void main(String[] args) {
 
-	        displayPublic();  
-	        displayProtected();  
-	        displayDefault();   
-	    }
-	}
+        // Main class object
+        Modifiers m = new Modifiers();
+        System.out.println("Main Class:");
+        System.out.println("a value: " + m.a);
+        System.out.println("b value: " + m.b);
+        System.out.println("c value: " + m.c);
+        System.out.println("d value: " + m.d);
 
-	// Main class
-	public class Modifiers {
-	    public static void main(String[] args) {
-	        Person person = new Person();
-	        System.out.println("--- Accessing Members from Main Method ---");
-	        System.out.println("Public Variable: " + person.name);
-	        System.out.println("Protected Variable: " + person.address);
-	        System.out.println("Default Variable: " + person.phone);
-
-	        person.displayPublic();  
-	        person.displayProtected(); 
-	        person.displayDefault();  
-	        person.accessPrivateMethod();  
-
-	 
-	        Student student = new Student();
-	        student.displayStudentDetails();
-	    }
-	
-	}
-
-	
-
+        // User-defined class object
+        Modi m1 = new Modi();
+        System.out.println("\nUser-Defined Class:");
+        System.out.println("a value: " + m1.a);
+        System.out.println("b value: " + m1.b);
+        System.out.println("c value: " + m1.c);
+        m1.setName("Sudhakar");
+        System.out.println("d value: " + m1.getName());
+    }
+}
